@@ -1,16 +1,17 @@
 import styled from 'styled-components';
 import imagen from "./img/cryptomonedas.png";
-
+import Formulario from './components/Formulario';
 
 function App() {
   return (
     <>
       <DivContenedor>
-        <div className="img">
+        {/* <div className="img">
           <Imagen src={imagen} alt="Imagen Cripto" />
-        </div>
+        </div> */}
         <div>
           <H1>Cotiza Criptomonedas al instante</H1>
+          <Formulario/>
         </div>
       </DivContenedor>
     </>
