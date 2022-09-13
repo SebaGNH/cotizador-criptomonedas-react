@@ -5,9 +5,21 @@ import useMoneda from '../Hooks/useMoneda.js';
 
 
 const Formulario = () => {
+
+  const opcionesMonedas = [
+    {codigo: 'USD', nombre: 'Dolar de Estados Unidos'},
+    {codigo: 'ARS', nombre: 'Peso Argentino'},
+    {codigo: 'MXN', nombre: 'Peso Mexicano'},
+    {codigo: 'GBP', nombre: 'Libra Exterlina'},
+    {codigo: 'EUR', nombre: 'Euro'}
+  ];
+
   //Utilizar useMoneda
   //Seleccionar es lo que se mostrará en pantalla
-  const [SeleccionarMonedas, estado, setEstado,] = useMoneda();
+  //Le pasamos valores por parámetros al hook
+  //Segundo parámetro un string vacío
+  const [SeleccionarMonedas, estado, setEstado,] = useMoneda('Elije tu moneda','',opcionesMonedas);
+
 
   return (
     <form action="">
