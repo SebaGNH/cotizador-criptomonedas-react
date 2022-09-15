@@ -1,7 +1,7 @@
 import React from 'react';
 import {Boton} from './Formulario.jsx';
 import useMoneda from '../Hooks/useMoneda.js';
-
+import useCriptoMoneda from '../Hooks/useCriptoMoneda.js';
 
 
 const Formulario = () => {
@@ -21,9 +21,14 @@ const Formulario = () => {
   const [SeleccionarMonedas, estado, setEstado,] = useMoneda('Elije tu moneda','',opcionesMonedas);
 
 
+  //Utilizar useCriptoMoneda  //labelString,stateInicial,opcionesMonedas
+  const [SeleccionarCripto, criptoMoneda ,setCriptoMoneda] = useCriptoMoneda('Elige tu CriptoMoneda');
+
+
   return (
     <form action="">
       <SeleccionarMonedas/>
+      <SeleccionarCripto/>
       <Boton
         type='submit'
         value='Calcular'

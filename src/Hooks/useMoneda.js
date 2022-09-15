@@ -1,4 +1,6 @@
 import React,{useState} from 'react';
+import {Label,Select} from './useMoneda.jsx';
+
 
 //El String recibido lo usaremos como "label"
 const useMoneda = (labelString,stateInicial,opcionesMonedas) => {//Esto es el state y otras operaciones
@@ -10,13 +12,13 @@ const useMoneda = (labelString,stateInicial,opcionesMonedas) => {//Esto es el st
   const SeleccionarMonedas = () => { //Esto se mostrará en pantalla
     return (
       <>
-        <label htmlFor="">{labelString}</label>
-        <select name="" id="">
+        <Label htmlFor="">{labelString}</Label>
+        <Select onChange={(e)=> setEstado(e.target.value)}>
           <option value="">-- Seleccione una Opción --</option>
           {opcionesMonedas.map( moneda => (
             <option key={moneda.codigo} value={moneda.codigo}>{moneda.nombre}</option>
           ))}
-        </select>
+        </Select>
       </>
     );
   }

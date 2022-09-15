@@ -1,17 +1,17 @@
 import styled from 'styled-components';
-import imagen from "./img/cryptomonedas.png";
+import imagen from "./img/barChain.png";
 import Formulario from './components/Formulario';
 
 function App() {
   return (
     <>
       <DivContenedor>
-        {/* <div className="img">
-          <Imagen src={imagen} alt="Imagen Cripto" />
-        </div> */}
         <div>
           <H1>Cotiza Criptomonedas al instante</H1>
           <Formulario/>
+        </div>
+        <div className="img">
+          <Imagen src={imagen} alt="Imagen Cripto" />
         </div>
       </DivContenedor>
     </>
@@ -20,8 +20,8 @@ function App() {
 
 const DivContenedor = styled.div`
   max-width: 900px;
-  margin: 0 auto;
-  @media (min-width: 992px){
+  margin: 0 1.5rem;
+  @media (min-width: 692px){ //992
     display: grid;
     grid-template-columns: repeat(2, 1fr); // 50% u 50%
     column-gap: 2rem;
