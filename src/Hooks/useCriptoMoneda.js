@@ -11,9 +11,11 @@ const useCriptoMoneda = (labelString,stateInicial,opcionesMonedas) => {
         <Label htmlFor="">{labelString}</Label>
         <Select onChange={(e)=> setCriptoMoneda(e.target.value)}>
           <option value="">-- Seleccione una Opción --</option>
-          {/*  {opcionesMonedas.map( criptoMoneda => (
-            <option key={criptoMoneda.codigo} value={criptoMoneda.codigo}>{criptoMoneda.nombre}</option>
-          ))} */}
+          {opcionesMonedas.map( criptoMoneda => (
+            <option key={criptoMoneda.CoinInfo.Id}
+              value={criptoMoneda.CoinInfo.Name}>
+              {criptoMoneda.CoinInfo.FullName}</option>
+          ))}
         </Select>
       </>
     );
@@ -22,3 +24,5 @@ const useCriptoMoneda = (labelString,stateInicial,opcionesMonedas) => {
   return [SeleccionarCripto, criptoMoneda ,setCriptoMoneda] 
 }
 export default useCriptoMoneda;
+//value={criptoMoneda.codigo}
+///{criptoMoneda.nombre}
