@@ -23,6 +23,8 @@ const Formulario = () => {
   //State del listado de critoMonedas
   const [listaCripto, setListaCripto] = useState([]);
 
+  //Error en consulta
+  const [error, setError] = useState(false);
 
   //Utilizar useCriptoMoneda  //labelString,stateInicial,opcionesMonedas
   const [SeleccionarCripto, criptoMoneda ,setCriptoMoneda] = useCriptoMoneda('Elige tu CriptoMoneda','',listaCripto);
@@ -41,10 +43,25 @@ const Formulario = () => {
     consutarAPI();
   },[]);
 
+  //Botón consultar
+  const submitHandler = (e) =>{
+    e.preventDefault();
 
+
+    //Validar campos custom Hooks
+    if (estado === ''|| criptoMoneda === '') {
+      setError(true);
+      return;
+    }
+    setError(false);
+
+    
+
+  }
 
   return (
-    <form action="">
+    <form action="" onSubmit={submitHandler}>
+      {error? <p>Hay error</p>: null}
       <SeleccionarMonedas/>
       <SeleccionarCripto/>
       <Boton

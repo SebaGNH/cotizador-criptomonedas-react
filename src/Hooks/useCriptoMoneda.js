@@ -24,5 +24,3 @@ const useCriptoMoneda = (labelString,stateInicial,opcionesMonedas) => {
   return [SeleccionarCripto, criptoMoneda ,setCriptoMoneda] 
 }
 export default useCriptoMoneda;
-//value={criptoMoneda.codigo}
-///{criptoMoneda.nombre}
