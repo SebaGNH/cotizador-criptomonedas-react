@@ -7,14 +7,17 @@ const useMoneda = (labelString,stateInicial,opcionesMonedas) => {//Esto es el st
   //State de nuestro custom Hook
   //Estado es la moneda que el usuario elija
   //stateInicial es un string vacío '' recibido desde Formuario
-  const [estado, setEstado] = useState(stateInicial);
+  const [moneda, setMoneda] = useState(stateInicial);
 
 
   const SeleccionarMonedas = () => { //Esto se mostrará en pantalla
     return (
       <>
         <Label htmlFor="">{labelString}</Label>
-        <Select onChange={(e)=> setEstado(e.target.value)}>
+        <Select 
+          onChange={(e)=> setMoneda(e.target.value)}
+          value={moneda}
+          > 
           <option value="">-- Seleccione una Opción --</option>
           {opcionesMonedas.map( moneda => (
             <option key={moneda.codigo} value={moneda.codigo}>{moneda.nombre}</option>
@@ -24,6 +27,6 @@ const useMoneda = (labelString,stateInicial,opcionesMonedas) => {//Esto es el st
     );
   }
   // Retornar state, interface y función que modifica el state
-  return [SeleccionarMonedas, estado ,setEstado] //No importa el orden
+  return [SeleccionarMonedas, moneda ,setMoneda] //No importa el orden
 }
 export default useMoneda;

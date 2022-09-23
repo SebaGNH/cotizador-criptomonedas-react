@@ -20,7 +20,7 @@ const Formulario = () => {
   //Seleccionar es lo que se mostrará en pantalla
   //Le pasamos valores por parámetros al hook
   //Segundo parámetro un string vacío
-  const [SeleccionarMonedas, estado, setEstado,] = useMoneda('Elije tu moneda','',opcionesMonedas);
+  const [SeleccionarMonedas, moneda, setMoneda,] = useMoneda('Elije tu moneda','',opcionesMonedas);
 
 
   //State del listado de critoMonedas
@@ -52,7 +52,7 @@ const Formulario = () => {
 
 
     //Validar campos custom Hooks
-    if (estado === ''|| criptoMoneda === '') {
+    if (moneda === ''|| criptoMoneda === '') {
       setError(true);
       return;
     }
@@ -64,7 +64,7 @@ const Formulario = () => {
 
   return (
     <form action="" onSubmit={submitHandler}>
-      {error? <Error mensaje='Error' />: null}
+      {error? <Error mensaje='Todos los campos son obligatorios' />: null}
       <SeleccionarMonedas/>
       <SeleccionarCripto/>
       <Boton
