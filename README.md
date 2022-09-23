@@ -13,4 +13,10 @@ https://min-api.cryptocompare.com/data/pricemulti?fsyms=ETH,DASH&tsyms=BTC,USD,E
 
 
 https://min-api.cryptocompare.com/data/pricemulti?fsyms=ETH,DASH&tsyms=BTC,USD,EUR&api_key=04a5eb37b223a70a59fdfec2ff6aa99473cc1bf041b7fa8a073c2923e18b2c71
+
+
+Link directo JT
+https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD
+
+
 -->

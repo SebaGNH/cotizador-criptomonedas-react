@@ -3,6 +3,8 @@ import {Boton} from './Formulario.jsx';
 import useMoneda from '../Hooks/useMoneda.js';
 import useCriptoMoneda from '../Hooks/useCriptoMoneda.js';
 import axios from 'axios';
+import Error from './Error.js';
+
 
 const Formulario = () => {
 
@@ -19,6 +21,7 @@ const Formulario = () => {
   //Le pasamos valores por parámetros al hook
   //Segundo parámetro un string vacío
   const [SeleccionarMonedas, estado, setEstado,] = useMoneda('Elije tu moneda','',opcionesMonedas);
+
 
   //State del listado de critoMonedas
   const [listaCripto, setListaCripto] = useState([]);
@@ -61,7 +64,7 @@ const Formulario = () => {
 
   return (
     <form action="" onSubmit={submitHandler}>
-      {error? <p>Hay error</p>: null}
+      {error? <Error mensaje='Error' />: null}
       <SeleccionarMonedas/>
       <SeleccionarCripto/>
       <Boton

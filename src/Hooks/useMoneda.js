@@ -9,6 +9,7 @@ const useMoneda = (labelString,stateInicial,opcionesMonedas) => {//Esto es el st
   //stateInicial es un string vacío '' recibido desde Formuario
   const [estado, setEstado] = useState(stateInicial);
 
+
   const SeleccionarMonedas = () => { //Esto se mostrará en pantalla
     return (
       <>

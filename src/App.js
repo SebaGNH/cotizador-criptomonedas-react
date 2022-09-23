@@ -37,7 +37,7 @@ const H1 = styled.h1`
   font-family: 'Bebas Neue', cursive;
   color: #fff;
   font-weight: 700;
-  font-size: 50px;
+  font-size: 30px;
   margin-bottom: 50px;
   margin-top: 80px;
   &::after{
