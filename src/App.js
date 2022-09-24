@@ -4,27 +4,33 @@ import imagen from "./img/barChain.png";
 import Formulario from './components/Formulario';
 import axios from 'axios';
 import Cotizacion from './components/Cotizacion';
-
+import Spinner from './components/Spinner';
 function App() {
 
   const [moneda, setGuardarMoneda] = useState('');
   const [criptoMoneda, setGuardarCriptoMoneda] = useState('');
   const [resultadoAPI, setResultadoAPI] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect( () => {
     //Evitamos la primera ejecución
     if (moneda === '') return;
     const consultarMonedas = async () =>{
-
-      //Consultar API con lo que el usuario elija
+    //Consultar API con lo que el usuario elija
     const urlAPI = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${criptoMoneda}&tsyms=${moneda}`;
-
+    setIsLoading(true);
+      
     const resultado = await axios.get(urlAPI);
     //Accedemos dinamicamente a la respuesta de la API
-    setResultadoAPI(resultado.data.DISPLAY[criptoMoneda][moneda]);
-    }
-    consultarMonedas();
 
+    //Solo para que se vea el spinner ya que la API es rápida
+    setTimeout( () =>{
+      setIsLoading(false);
+      setResultadoAPI(resultado.data.DISPLAY[criptoMoneda][moneda]);
+    },500);
+    }
+    
+    consultarMonedas();
   },[moneda,criptoMoneda]);
 
   return (
@@ -36,7 +42,12 @@ function App() {
             setGuardarMoneda={setGuardarMoneda}
             setGuardarCriptoMoneda={setGuardarCriptoMoneda}
           />
-          <Cotizacion resultadoAPI={resultadoAPI}/>
+          {
+            isLoading?
+              <Spinner />
+            :
+              <Cotizacion resultadoAPI={resultadoAPI}/>
+          }
         </div>
         <div className="img">
           <Imagen src={imagen} alt="Imagen Cripto" />
