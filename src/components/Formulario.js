@@ -6,7 +6,7 @@ import axios from 'axios';
 import Error from './Error.js';
 
 
-const Formulario = () => {
+const Formulario = ({setGuardarMoneda,setGuardarCriptoMoneda}) => {
 
   const opcionesMonedas = [
     {codigo: 'USD', nombre: 'Dolar de Estados Unidos'},
@@ -58,8 +58,9 @@ const Formulario = () => {
     }
     setError(false);
 
-    
-
+    //Si pasa la validación seguardan en App.js
+    setGuardarMoneda(moneda);
+    setGuardarCriptoMoneda(criptoMoneda);
   }
 
   return (

@@ -1,20 +1,48 @@
+import React,{Fragment,useState,useEffect} from 'react';
 import styled from 'styled-components';
 import imagen from "./img/barChain.png";
 import Formulario from './components/Formulario';
+import axios from 'axios';
+import Cotizacion from './components/Cotizacion';
 
 function App() {
+
+  const [moneda, setGuardarMoneda] = useState('');
+  const [criptoMoneda, setGuardarCriptoMoneda] = useState('');
+  const [resultadoAPI, setResultadoAPI] = useState({});
+
+  useEffect( () => {
+    //Evitamos la primera ejecución
+    if (moneda === '') return;
+    const consultarMonedas = async () =>{
+
+      //Consultar API con lo que el usuario elija
+    const urlAPI = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${criptoMoneda}&tsyms=${moneda}`;
+
+    const resultado = await axios.get(urlAPI);
+    //Accedemos dinamicamente a la respuesta de la API
+    setResultadoAPI(resultado.data.DISPLAY[criptoMoneda][moneda]);
+    }
+    consultarMonedas();
+
+  },[moneda,criptoMoneda]);
+
   return (
-    <>
+    <Fragment>
       <DivContenedor>
         <div>
           <H1>Cotiza Criptomonedas al instante</H1>
-          <Formulario/>
+          <Formulario
+            setGuardarMoneda={setGuardarMoneda}
+            setGuardarCriptoMoneda={setGuardarCriptoMoneda}
+          />
+          <Cotizacion resultadoAPI={resultadoAPI}/>
         </div>
         <div className="img">
           <Imagen src={imagen} alt="Imagen Cripto" />
         </div>
       </DivContenedor>
-    </>
+    </Fragment>
   );
 }
 
